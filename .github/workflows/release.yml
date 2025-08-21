@@ -20,7 +20,7 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y zip
     - uses: dtolnay/rust-toolchain@stable
-    
+
     - name: Check rust version
       run: rustc --version --verbose
     
@@ -62,12 +62,7 @@ jobs:
         draft: false
         prerelease: false
     
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Release
+      uses: softprops/action-gh-release@v2
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./release-pkg.zip
-        asset_name: release-pkg.zip
-        asset_content_type: application/zip
+          files: release-pkg.zip
