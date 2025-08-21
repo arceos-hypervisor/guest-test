@@ -5,6 +5,9 @@ on:
     tags:
       - '*-release'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -33,3 +36,18 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
           files: release-pkg.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## Release ${{ github.ref_name }}
+            
+            This release contains pre-built binaries for multiple architectures.
+            
+            ### Contents
+            - guest-test binaries for x86_64 and aarch64 architectures
+            
+            ### Installation
+            1. Download the `release-pkg.zip` file
+            2. Extract the archive
+            3. Use the appropriate binary for your architecture
