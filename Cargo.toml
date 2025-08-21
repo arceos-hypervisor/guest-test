@@ -1,0 +1,15 @@
+[package]
+edition = "2024"
+name = "guest-test"
+version = "0.1.0"
+
+[dependencies]
+axstd = {git = "https://github.com/arceos-hypervisor/arceos.git", branch = "vmm-dev", features = ["alloc", "paging", "multitask", "irq", "smp", "page-alloc-4g"]}
+log = "=0.4.21"
+
+
+[target.'cfg(target_arch = "aarch64")'.dependencies]
+axplat-aarch64-dyn = {git = "https://github.com/arceos-hypervisor/axplat-aarch64-dyn", features = ["irq", "smp"]}
+
+[target.'cfg(target_arch = "x86_64")'.dependencies]
+axplat-x86-pc = {git = "https://github.com/arceos-hypervisor/axplat_crates.git", branch = "vmm", features = ["irq", "smp"]}

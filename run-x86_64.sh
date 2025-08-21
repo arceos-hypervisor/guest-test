@@ -1,0 +1,1 @@
+make -C .arceos A=$(pwd) LOG=info ACCEL=y ARCH=x86_64 run

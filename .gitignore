@@ -1,0 +1,9 @@
+/target
+/.arceos
+/*.bin
+/*.elf
+/*.log
+/*.img
+/.axconfig*
+/*.zip
+/release-pkg*
